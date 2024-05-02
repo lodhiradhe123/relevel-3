@@ -1,0 +1,36 @@
+*::selection{
+    background-color: blueviolet;
+}
+
+body[theme="black"]{
+    background-color: greenyellow;
+
+}
+body[theme="black"] .section{
+    color: blueviolet;
+
+}
+body[theme="cyan"]{
+    background-color: burlywood;
+
+}
+body[theme="cyan"]  .section{
+   color: white;
+
+}
+body[theme="white"]{
+    background-color: rosybrown;
+
+}
+body[theme="white"] .section{
+  color: aqua;
+
+}
+[theme="light"]{
+    background-color: lightsalmon;
+
+}
+body[theme="light"] .section{
+    color: beige;
+
+}
