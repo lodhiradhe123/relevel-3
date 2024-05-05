@@ -1,6 +1,9 @@
 *::selection{
     background-color: blueviolet;
 }
+body{
+    transition: background-color ease-out .9s;
+}
 
 .video{
     clip-path: circle(var(--clip) at 50% 50%)

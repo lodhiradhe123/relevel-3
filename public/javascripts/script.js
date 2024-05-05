@@ -1,3 +1,8 @@
+
+(function () {
+    const locomotiveScroll = new LocomotiveScroll();
+})();
+
 function homepage(){
     
 gsap.set(".allslides",{scale:3})
@@ -67,15 +72,119 @@ function animation(){
 }
 
 
-const clutter ="";
-document.querySelector(".paratext").textContent.split("").forEach(function(e){
-if(e === " ") clutter += `<span>&nbsp;</span>`
-clutter += `<span>${e}</span>`
-})
+function paratextanimation(){
+
+    var clutter = "";
+ const textdata = document.querySelector(".paratext").textContent.split("");
+
+textdata.forEach(element => {
+
+    if(element === " ") clutter += `<span>&nbsp;</span>`
+clutter += `<span>${element}</span>`
+    
+});
 document.querySelector(".paratext").innerHTML=clutter;
-  gsap.set(".paratext sapn",{opacity:.1})
+  gsap.set(".paratext span",{opacity:.1});
+  gsap.set(".paraimg",{scale:0,opacity:.1});
+
+  gsap.to(".paratext span",{
+scrollTrigger:{
+    trigger:".para",
+    sccroller:"body",
+    // markers:true,
+    start:"top 75%",
+    end:"bottom 60%",
+    scrub:true,
+ 
+},
+    opacity:1,
+    stagger:.009,
+
+  })
+  gsap.to(".paraimg",{
+    scrollTrigger:{
+        trigger:".para",
+        sccroller:"body",
+        start:"top 75%",
+        end:"bottom 80%",
+        scrub:true,
+    },
+    scale:1,
+    opacity:1,
+    // rotate:"360deg"
+
+  })
+};
 
 
+function lastdiv(){
+    
+gsap.to(".right-right",{
+    scrollTrigger:{
+     trigger:".right-left ",
+     scroller:"body",
+     // markers:true,
+     start:"top -50%",
+     end:"bottom 0%",
+     scrub:1,
+ 
+    },
+    rotate:"20deg",
+    y:0,
+ },'z')
+ gsap.to(".right-left",{
+     scrollTrigger:{
+         trigger:".right-left ",
+         scroller:"body",
+         // markers:true,
+         start:"top -70%",
+         end:"bottom 10%",
+         scrub:1,
+ 
+     
+        },
+         rotate:"20deg",
+         y:"20%",
+         x:"-10%",
+         // stagger:true,
+         ease:Power4,
+        
+ 
+ },'z')
+}
+
+function themeanimation(){
+
+    document.querySelectorAll(".section")
+.forEach((e)=>{
+    ScrollTrigger.create({
+        trigger:e,
+        markers:true,
+        start:"top 50%",
+        end:"bottom 50%",
+
+        onEnter: function(){
+            document.body.setAttribute("theme", e.dataset.color);
+
+        },
+        onEnterBack: function(){
+            document.body.setAttribute("theme", e.dataset.color);
+
+
+
+        }
+
+    })
+})
+}
+
+
+
+
+
+lastdiv();
 homepage();
 page2();
 animation();
+paratextanimation();
+themeanimation();
